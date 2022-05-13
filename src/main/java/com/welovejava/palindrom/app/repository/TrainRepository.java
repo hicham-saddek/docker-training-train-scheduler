@@ -12,7 +12,11 @@ import java.time.LocalDateTime;
 @Repository
 public interface TrainRepository extends CrudRepository<Train, Integer> {
 
-    @Query("DELETE FROM Train train WHERE train.origin = :origin AND train.destination = :destination AND train.startingDateTime = :start AND train.endingDateTime = :end")
+    @Query("DELETE FROM Train train " +
+            "WHERE train.origin = :origin" +
+            " AND train.destination = :destination" +
+            " AND train.startingDateTime = :start" +
+            " AND train.endingDateTime = :end")
     @Modifying
     @Transactional
     boolean deleteByInfo(String origin, String destination, LocalDateTime start, LocalDateTime end);
